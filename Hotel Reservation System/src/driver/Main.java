@@ -1,12 +1,33 @@
 package driver;
 
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class Main {
 	
-public static void main(String args[]){
+	
+	public static void main(String args[]){
+		
+		
+		
+		
+		
+		
+		Registration Regist = new Registration("m", "m", "m", "m", "m", "m");
+		
+		/*Registration person1 = new Registration("Mike", "Smith", 6, 3, false);
+		Registration person2 = new Registration("Phillip", "Works", 7, 13, true);
+
+		
+		Regist.addCustomer("Mike", person1);
+		
+		Regist.addCustomer(person2.firstName(), person2);
+
+		
+		System.out.println(Regist.lastName("Mike"));
+		
+		System.out.println(Regist.lastName(person2.firstName()));*/
 		
 		System.out.println("Hi, please choose one of the following options: ");
 		System.out.println("1: New Customer Registration");
@@ -19,10 +40,11 @@ public static void main(String args[]){
 		int num = user_input.nextInt();
 		
 		
+		int i = 0;
 		
-		Boolean quit = false;
-		while(!quit){
+		while(i < 2){
 		
+	
 		// Use a try if you cannot find a way to close the scanner
 		switch (num) {
 		
@@ -40,12 +62,12 @@ public static void main(String args[]){
 				input_array[1] = input1.nextLine();
 				
 				
-				// Putting in the number of people
-				System.out.println("Please put in the number of people staying: ");
-				input_array[2] = input1.nextLine();
-				
 				// Putting in the type of room
 				System.out.println("Please put in the room type that you wish to stay in: ");
+				input_array[2] = input1.nextLine();
+				
+				// Putting in the number of people
+				System.out.println("Please put in the number of people staying: ");
 				input_array[3] = input1.nextLine();
 				
 				
@@ -55,34 +77,47 @@ public static void main(String args[]){
 				
 				// Putting in whether parking space is needed
 				System.out.println("Please put in if you need a parking space: ");
-				input_array[5] = input1.nextLine();		
+				input_array[5] = input1.nextLine();
 
 				
 				int space;
 
 				// Checks if there is space for a normal room
-				if(input_array[3].equals("normal room")){
-					space = Customer.normal_room - 1;
+				if(input_array[2].equals("normal room")){
+					space = Registration.normal_room - 1;
 					if(space >= 0){
-						Customer new_customer = new Customer(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
+						Registration new_customer = new Registration(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
+						Registration new_customer1 = new Registration("where", "who", "suite room", "5", "7", "yes");
+
+						Regist.addCustomer(new_customer.firstName(), new_customer);
+
+						
+						System.out.println(new_customer.firstName());
+						System.out.println(Regist.lastName(new_customer.firstName()));
+						i++;
 					}
-					
 					else{
-						System.out.println("No space nigga");
+						System.out.println("No space");
+						i++;
+
 					}
 				}
 				
 				//Integer.valueOf(input_array[2]
 				
 				// Checks if there is space for a nice suite
-				else if(input_array[3].equals("nice suite")){
-					space = Customer.nice_suites - 1;
+				else if(input_array[2].equals("nice suite")){
+					space = Registration.nice_suites - 1;
 					if(space >= 0){
-						Customer customer = new Customer(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
+						Registration customer = new Registration(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
+						i++;
+
 					}
 			
 					else{
-						System.out.println("No space nigga");
+						System.out.println("No space");
+						i++;
+
 					}
 					
 				}
@@ -95,14 +130,14 @@ public static void main(String args[]){
 
 			case 2:
 				System.out.println("You chose #2");
-				quit = false;
 				break;
 			
 			default: 
 				break;
 		}
+		}
 		
-	}
 	user_input.close();
+				
 }
 }

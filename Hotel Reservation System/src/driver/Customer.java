@@ -28,4 +28,3 @@ public abstract class Customer {
 	}
 
 }
-customerID
