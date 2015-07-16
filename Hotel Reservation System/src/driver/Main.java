@@ -14,22 +14,24 @@ public class Main {
 		
 		
 		
-		Registration Regist = new Registration("m", "m", "m", "m", "m", "m");
+		Customer Regist = new Customer("55", "m", "m", "m", "m", "m", "m");
 		
-		/*Registration person1 = new Registration("Mike", "Smith", 6, 3, false);
-		Registration person2 = new Registration("Phillip", "Works", 7, 13, true);
+		Customer person1 = new Customer("66", "Mike", "Smith", "What", "3", "false", "lk;");
+		Customer person2 = new Customer("44", "UEONO", "HAHA", "100", "13", "true", "hgjhg");
 
 		
-		Regist.addCustomer("Mike", person1);
-		
-		Regist.addCustomer(person2.firstName(), person2);
+		Regist.addCustomer("66", person1);
+	
+		Regist.addCustomer(person2.getID(), person2);
 
 		
-		System.out.println(Regist.lastName("Mike"));
+		System.out.println(Regist.getRoomType(person1.getID()));
+
+		System.out.println(Regist.lastName(person2.getID()));
 		
-		System.out.println(Regist.lastName(person2.firstName()));*/
+		System.out.println(Registration.normal_room);
 		
-		System.out.println("Hi, please choose one of the following options: ");
+		/*System.out.println("Hi, please choose one of the following options: ");
 		System.out.println("1: New Customer Registration");
 		System.out.println("2: Lost Keys");
 		
@@ -137,7 +139,7 @@ public class Main {
 		}
 		}
 		
-	user_input.close();
+	user_input.close();*/
 				
 }
 }

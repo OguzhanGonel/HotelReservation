@@ -1,30 +1,60 @@
 package driver;
 
-public abstract class Customer {
+public class Customer extends Registration{
 	
-	// store the below 3 in hashtable, then in setRoom function, put the id there.
-	
-	static int normal_room = 100;
-	static int nice_suites = 10;
-	static int parking_space = 500;
-	
-	int room_number, parking_slot, customerID;
-	
+
+	// Create getter and setter for all
+
 	
 	// Customer constructor
-	public Customer(int room_number, int parking_slot, int customerID){
-		
-		this.room_number = room_number;
-		this.parking_slot = parking_slot;
-		this.customerID = customerID;
-		
-		
-		
+	public Customer(String ID, String first_name, String last_name, String roomType, String num_people, String time_of_stay, String customer_parking){
+		super(ID);
+		normal_room = normal_room - 1;
+		this.first_name = first_name;
+		this.last_name = last_name; 
+		this.roomType = roomType;
+		this.num_people = num_people;
+		this.time_of_stay = time_of_stay;
+		this.customer_parking = customer_parking;
 	}
 	
-	
-	public void setRoom(int room_number){
+	// Adds customers to the customersTable
+		public void addCustomer(String firstName, Registration person){
+			customersTable.put(firstName, person);
+		}
+		// Removes customers from the customersTable
+		public void removeCustomer(String firstName, Registration person){
+			this.customersTable.remove(firstName);
+		}
 		
-	}
+		public String getID(){
+			return this.ID;
+		}
+		
+		// Returns the first name of the customer
+		public String firstName(){
+			return this.first_name;
+		}
+
+		// Returns the last name of the customer
+		public String lastName(String firstName){
+			return customersTable.get(firstName).last_name;
+		}
+		
+		// Returns the room type of the customer
+		public String getRoomType(String firstName){
+			return customersTable.get(firstName).roomType;
+		}
+		
+		// Returns the number of people staying with that customer including him/her
+		public String numberPeople(String firstName){
+			return customersTable.get(firstName).num_people;
+		}
+		
+		// Returns the time of stay of the customer
+		public String timeOfStay(String firstName){
+			return customersTable.get(firstName).time_of_stay;
+		}
+		
 
 }
