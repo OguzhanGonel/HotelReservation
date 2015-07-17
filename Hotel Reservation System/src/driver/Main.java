@@ -14,10 +14,10 @@ public class Main {
 		
 		
 		
-		Customer Regist = new Customer("55", "m", "m", "m", "m", "m", "m");
+		Customer Regist = new Customer.CustomerBuilder("55", "m", "m", "m", 4, 4).build();
 		
-		Customer person1 = new Customer("66", "Mike", "Smith", "What", "3", "false", "lk;");
-		Customer person2 = new Customer("44", "UEONO", "HAHA", "100", "13", "true", "hgjhg");
+		Customer person1 = new Customer.CustomerBuilder("66", "Mike", "Smith", "who", 3, 5).build();
+		Customer person2 = new Customer.CustomerBuilder("44", "UEONO", "whooo", "what", 13, 2).setAmenities(true).build();
 
 		
 		Regist.addCustomer("66", person1);
@@ -27,9 +27,9 @@ public class Main {
 		
 		System.out.println(Regist.getRoomType(person1.getID()));
 
-		System.out.println(Regist.lastName(person2.getID()));
+		System.out.println(Regist.getCost(person2.getID()));
 		
-		System.out.println(Registration.normal_room);
+		System.out.println(Customer.normal_room);
 		
 		/*System.out.println("Hi, please choose one of the following options: ");
 		System.out.println("1: New Customer Registration");
