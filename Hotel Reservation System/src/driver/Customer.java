@@ -4,6 +4,8 @@ import java.util.Hashtable;
 
 public class Customer{
 	
+	// make customer have an id and store them by id not the first name
+	
 	// This hashtable will store the customer objects
 	Hashtable<String, Customer> customersTable = new Hashtable<String, Customer>();
 
@@ -84,12 +86,14 @@ public class Customer{
 		return customersTable.get(firstName).totalCost;
 	}
 	
+	 
+	
 	
 	
 	
 		
 		// This is the builder class for Customer Class
-		public static class CustomerBuilder extends Registration{
+		public static class CustomerBuilder{
 			
 			// The required attributes
 			private final String ID, first_name, last_name, roomType;
