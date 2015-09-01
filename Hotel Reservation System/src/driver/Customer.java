@@ -17,7 +17,7 @@ public class Customer{
 	// The below are the attributes of a Customer Object
 	private final String ID, first_name, last_name, roomType;
 	private final int num_people, time_of_stay;
-	private int customer_parking;
+	private int customer_parking, roomNumber;
 	private int totalCost;
 	private boolean amenities;
 	
@@ -87,6 +87,10 @@ public class Customer{
 	}
 	
 	 
+	public Boolean getAmenities(String firstName){
+		return customersTable.get(firstName).amenities;
+
+	}
 	
 	
 	
@@ -108,7 +112,6 @@ public class Customer{
 			// The CustomerBuilder class constructor
 			public CustomerBuilder(String ID, String first_name, String last_name, String roomType, int num_people, int time_of_stay){
 				this.ID = ID;
-				normal_room = normal_room - 1;
 				this.first_name = first_name;
 				this.last_name = last_name;
 				this.roomType = roomType;
@@ -142,8 +145,5 @@ public class Customer{
 			public Customer build(){
 				return new Customer(this);
 			}
-			
 		}
-		
-
 }

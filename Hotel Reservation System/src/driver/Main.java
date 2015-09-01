@@ -14,9 +14,9 @@ public class Main {
 		
 		
 		
-		Customer Regist = new Customer.CustomerBuilder("55", "m", "m", "m", 4, 4).build();
+		/*Customer Regist = new Customer.CustomerBuilder("55", "m", "m", "m", 4, 4).build();
 		
-		Customer person1 = new Customer.CustomerBuilder("66", "Mike", "Smith", "who", 3, 5).build();
+		Customer person1 = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
 		Customer person2 = new Customer.CustomerBuilder("44", "UEONO", "whooo", "what", 13, 2).setAmenities(true).build();
 
 		
@@ -29,28 +29,31 @@ public class Main {
 
 		System.out.println(Regist.getCost(person2.getID()));
 		
-		System.out.println(Customer.normal_room);
-		
-		/*System.out.println("Hi, please choose one of the following options: ");
-		System.out.println("1: New Customer Registration");
-		System.out.println("2: Lost Keys");
+		System.out.println(Customer.normal_room);*/
 		
 		
 		
-		Scanner user_input = new Scanner(System.in);
-	
-		int num = user_input.nextInt();
 		
+			
 		
-		int i = 0;
-		
-		while(i < 2){
-		
+			
+			System.out.println("Hi, please choose one of the following options: ");
+			System.out.println("1: New Customer Registration");
+			System.out.println("2: Lost Keys");
+			
+			
+			
+			Scanner user_input = new Scanner(System.in);
+			
+			
+				int num = user_input.nextInt();
+			
+			
 	
 		// Use a try if you cannot find a way to close the scanner
-		switch (num) {
 		
-			case 1:
+		
+			if(num == 1){
 				String[] input_array = new String[6];
 				
 				// Putting in the first name
@@ -83,63 +86,72 @@ public class Main {
 
 				
 				int space;
-
+				System.out.println("almost there");
 				// Checks if there is space for a normal room
 				if(input_array[2].equals("normal room")){
-					space = Registration.normal_room - 1;
+					space = Customer.normal_room - 1;
+					Customer.normal_room = Customer.normal_room - 1;
+;
 					if(space >= 0){
-						Registration new_customer = new Registration(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
-						Registration new_customer1 = new Registration("where", "who", "suite room", "5", "7", "yes");
+						Customer new_customer = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
+						Customer new_customer1 = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
 
-						Regist.addCustomer(new_customer.firstName(), new_customer);
+						new_customer.addCustomer(new_customer.getID(), new_customer);
 
 						
-						System.out.println(new_customer.firstName());
-						System.out.println(Regist.lastName(new_customer.firstName()));
-						i++;
+						System.out.println(new_customer.getRoomType(new_customer.getID()));
+
+						System.out.println(new_customer.getCost(new_customer.getID()));
+						
+						System.out.println(Customer.normal_room);
+						
+				
+						System.out.println("we here");
+
+					
 					}
 					else{
 						System.out.println("No space");
-						i++;
+					
 
 					}
 				}
 				
-				//Integer.valueOf(input_array[2]
+	
 				
 				// Checks if there is space for a nice suite
 				else if(input_array[2].equals("nice suite")){
-					space = Registration.nice_suites - 1;
+					space = Customer.nice_suites - 1;
 					if(space >= 0){
-						Registration customer = new Registration(input_array[0], input_array[1], input_array[2], input_array[3], input_array[4], input_array[5]);
-						i++;
+						Customer customer = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
+			
 
 					}
 			
 					else{
 						System.out.println("No space");
-						i++;
+				
 
 					}
 					
 				}
 				input1.close();
-				break;
-				
+			
+			
+			}
 				
 				
 				
 
-			case 2:
+			if(num == 2){
 				System.out.println("You chose #2");
-				break;
 			
-			default: 
-				break;
-		}
+			
+			}
+			
+			user_input.close();
 		}
 		
-	user_input.close();*/
+	
 				
-}
 }
