@@ -7,7 +7,7 @@ public class Customer{
 	// make customer have an id and store them by id not the first name
 	
 	// This hashtable will store the customer objects
-	Hashtable<String, Customer> customersTable = new Hashtable<String, Customer>();
+	Hashtable<Integer, Customer> customersTable = new Hashtable<Integer, Customer>();
 
 	// These are the values for the hotel
 	public static int normal_room = 100;
@@ -15,11 +15,12 @@ public class Customer{
 	static int parking_space = 500;
 
 	// The below are the attributes of a Customer Object
-	private final String ID, first_name, last_name, roomType;
+	private final int ID;
+	private final String first_name, last_name, roomType;
 	private final int num_people, time_of_stay;
-	private int customer_parking, roomNumber;
+	private int roomNumber;
 	private int totalCost;
-	private boolean amenities;
+	private boolean customer_parking, amenities;
 	
 	// Customer constructor
 	private Customer(CustomerBuilder builder){
@@ -39,15 +40,15 @@ public class Customer{
 
 	
 	// Adds a customer from the customersTable
-	public void addCustomer(String firstName, Customer person){
-		customersTable.put(firstName, person);
+	public void addCustomer(int id, Customer person){
+		customersTable.put(id, person);
 	}
 	// Removes a customer from the customersTable
-	public void removeCustomer(String firstName, Customer person){
+	public void removeCustomer(int firstName, Customer person){
 		this.customersTable.remove(firstName);
 	}
 	
-	public String getID(){
+	public int getID(){
 		return this.ID;
 	}
 	
@@ -57,37 +58,37 @@ public class Customer{
 	}
 
 	// Returns the last name of the customer
-	public String lastName(String firstName){
+	public String lastName(int firstName){
 		return customersTable.get(firstName).last_name;
 	}
 	
 	// Returns the room type of the customer
-	public String getRoomType(String firstName){
+	public String getRoomType(int firstName){
 		return customersTable.get(firstName).roomType;
 	}
 	
 	// Returns the number of people staying with that customer including him/her
-	public int numberPeople(String firstName){
+	public int numberPeople(int firstName){
 		return customersTable.get(firstName).num_people;
 	}
 	
 	// Returns the time of stay of the customer
-	public int timeOfStay(String firstName){
+	public int timeOfStay(int firstName){
 		return customersTable.get(firstName).time_of_stay;
 	}
 	
 	// Returns the parking slot of the customer
-	public int getParking(String firstName){
+	public boolean getParking(int firstName){
 		return customersTable.get(firstName).customer_parking;
 	}
 	
 	// Returns the total cost of stay for the customer
-	public int getCost(String firstName){
+	public int getCost(int firstName){
 		return customersTable.get(firstName).totalCost;
 	}
 	
 	 
-	public Boolean getAmenities(String firstName){
+	public Boolean getAmenities(int firstName){
 		return customersTable.get(firstName).amenities;
 
 	}
@@ -100,17 +101,18 @@ public class Customer{
 		public static class CustomerBuilder{
 			
 			// The required attributes
-			private final String ID, first_name, last_name, roomType;
+			private final int ID;
+			private final String first_name, last_name, roomType;
 			private final int num_people, time_of_stay;
 			
 			// The optional attributes
-			private int customer_parking;
+			private boolean customer_parking = false;
 			private int totalCost;
 			private boolean amenities = false;
 
 
 			// The CustomerBuilder class constructor
-			public CustomerBuilder(String ID, String first_name, String last_name, String roomType, int num_people, int time_of_stay){
+			public CustomerBuilder(int ID, String first_name, String last_name, String roomType, int num_people, int time_of_stay){
 				this.ID = ID;
 				this.first_name = first_name;
 				this.last_name = last_name;
@@ -121,7 +123,7 @@ public class Customer{
 			}
 			
 			// This sets the parking slot of the customer
-			public CustomerBuilder customerParking(int val){
+			public CustomerBuilder customerParking(boolean val){
 				customer_parking = val;
 				return this;
 			}

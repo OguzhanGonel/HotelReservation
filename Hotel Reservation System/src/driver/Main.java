@@ -1,6 +1,7 @@
 package driver;
 
 import java.util.Scanner;
+import java.util.Random;
 
 
 
@@ -28,25 +29,33 @@ public class Main {
 		System.out.println(Regist.getRoomType(person1.getID()));
 
 		System.out.println(Regist.getCost(person2.getID()));
-		
+		git 
 		System.out.println(Customer.normal_room);*/
 		
 		
 		
 		
-			
+		Customer customerList = new Customer.CustomerBuilder(0, "", "", "", 0, 0).build();
 		
+		Random rand = new Random();
+
+		int randNum = rand.nextInt(100+1);
+		System.out.println(randNum);
+
+		
+		Customer.normal_room = Customer.normal_room - randNum;
 			
 			System.out.println("Hi, please choose one of the following options: ");
 			System.out.println("1: New Customer Registration");
-			System.out.println("2: Lost Keys");
+			System.out.println("2: Add Utilities");
+			System.out.println("3: Lost Keys");
+			
 			
 			
 			
 			Scanner user_input = new Scanner(System.in);
 			
-			
-				int num = user_input.nextInt();
+			int num = user_input.nextInt();
 			
 			
 	
@@ -54,7 +63,10 @@ public class Main {
 		
 		
 			if(num == 1){
-				String[] input_array = new String[6];
+				String[] input_array = new String[3];
+				Integer[] input_array1 = new Integer[2];
+				boolean[] input_array2 = new boolean[1];
+
 				
 				// Putting in the first name
 				System.out.println("Please put in the first name: ");
@@ -73,17 +85,18 @@ public class Main {
 				
 				// Putting in the number of people
 				System.out.println("Please put in the number of people staying: ");
-				input_array[3] = input1.nextLine();
+				input_array1[0] = input1.nextInt();
 				
 				
 				// Putting in the time of stay
 				System.out.println("Please put in the time of stay: ");
-				input_array[4] = input1.nextLine();		
+				input_array1[1] = input1.nextInt();		
 				
 				// Putting in whether parking space is needed
 				System.out.println("Please put in if you need a parking space: ");
-				input_array[5] = input1.nextLine();
+				input_array2[5] = input1.nextBoolean();
 
+				int custID = 0;
 				
 				int space;
 				System.out.println("almost there");
@@ -93,15 +106,14 @@ public class Main {
 					Customer.normal_room = Customer.normal_room - 1;
 ;
 					if(space >= 0){
-						Customer new_customer = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
-						Customer new_customer1 = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
+						Customer new_customer = new Customer.CustomerBuilder(custID+1, input_array[0], input_array[1], input_array[2], input_array1[0], input_array1[1]).build();
 
-						new_customer.addCustomer(new_customer.getID(), new_customer);
+						customerList.addCustomer(new_customer.getID(), new_customer);
 
 						
-						System.out.println(new_customer.getRoomType(new_customer.getID()));
+						System.out.println(new_customer.getID());
 
-						System.out.println(new_customer.getCost(new_customer.getID()));
+						System.out.println(customerList.getCost(new_customer.getID()));
 						
 						System.out.println(Customer.normal_room);
 						
@@ -123,7 +135,7 @@ public class Main {
 				else if(input_array[2].equals("nice suite")){
 					space = Customer.nice_suites - 1;
 					if(space >= 0){
-						Customer customer = new Customer.CustomerBuilder("66", "Mike", "Smith", "nice room", 3, 5).build();
+						Customer customer = new Customer.CustomerBuilder(custID+1, "Mike", "Smith", "nice room", 3, 5).build();
 			
 
 					}
