@@ -48,18 +48,22 @@ public class Customer{
 		this.customersTable.remove(firstName);
 	}
 	
+	public Customer getCustomer(int ID){
+		return this.customersTable.get(ID);
+	}
+	
 	public int getID(){
 		return this.ID;
 	}
 	
 	// Returns the first name of the customer
-	public String firstName(){
-		return this.first_name;
+	public String firstName(int ID){
+		return customersTable.get(ID).first_name;
 	}
 
 	// Returns the last name of the customer
-	public String lastName(int firstName){
-		return customersTable.get(firstName).last_name;
+	public String lastName(int ID){
+		return customersTable.get(ID).last_name;
 	}
 	
 	// Returns the room type of the customer
@@ -93,6 +97,12 @@ public class Customer{
 
 	}
 	
+	public boolean setAmenities(int ID){
+		return this.customersTable.get(ID).amenities = true;
+
+	}
+	
+
 	
 	
 	
